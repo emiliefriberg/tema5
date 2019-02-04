@@ -13,6 +13,7 @@
         const vægt = 67;
         let højde = 1.63;
         let bmi = vægt / (højde * højde);
+        bmi = Math.round(bmi);
         let resultat = `Bmi'en er ${bmi}`;
 
         console.log(resultat);
