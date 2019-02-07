@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <div id="dyr">
+        <h2></h2>
+        <img src="" alt="">
+        <p>Type: </p>
+        <p>Levested: </p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let dyr = {
+            "navn": "gris",
+            "type": "pattedyr",
+            "billede": "http://helf-kea.dk/test/gris.png",
+            "levested": "svinefamilie"
+        };
+
+        console.log(dyr);
+
+        function start() {
+
+            document.querySelector("#dyr h2").innerHTML = `${dyr.navn}`;
+            document.querySelector("#dyr img").src = `${dyr.billede}`;
+            document.querySelector("#dyr img").alt = `${dyr.navn}>`;
+            document.querySelector("#dyr p").innerHTML += `${dyr.type}`;
+            document.querySelector("#dyr p + p").innerHTML += `${dyr.levested}`;
+
+
+
+            let destination = document.querySelector("#dyr");
+
+            destination.querySelector("img").innerHTML += `${dyr.billede}`;
+
+
+            //           document.querySelector("#dyr").innerHTML = `<p> navn : ${dyr.navn}, type : ${dyr.type}, levested : ${dyr.levested}</p> `;
+
+            //            document.querySelector("#dyr").innerHTML += `<img src=${dyr.billede} alt=${dyr.navn}>`;
+
+
+        }
+    </script>
+</body>
+
+</html>
