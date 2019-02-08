@@ -6,19 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
+        body {
+            background-color: lightgrey;
+        }
+
         img {
             width: 100%;
         }
 
-        .minperson {
-            border: 1px solid black;
+        .minret {
+            border: 1px solid transparent;
             padding: 1rem;
+            background-color: white;
         }
+
+        .minret:nth-child(even) {
+            background-color: darkgrey;
+            color: white;
+        }
+
+        h3 {
+            font-size: 1.7rem;
+        }
+
 
         #liste {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            text-align: center;
             margin: 1rem;
             grid-gap: 2rem;
         }
@@ -66,12 +80,13 @@
         function visRetter() {
             let dest = document.querySelector("#liste");
 
-            alleRetter.forEach(retter => {
+            alleRetter.forEach(ret => {
                 dest.innerHTML += `
               <div class="minret">
+                <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}>
                 <h3>${ret.navn}</h3>
-                <p>${ret.github}</p>
-                <img src=${ret.billede} alt=${ret.navn}>
+                <p>${ret.kort}</p>
+                <p>Pris: ${ret.pris},-</p>
              </div>
             `;
             })
