@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="">
 
@@ -46,7 +44,7 @@
     </div>
 
     <script>
-        let allePersoner = [];
+        let alleRetter = [];
 
         document.addEventListener("DOMContentLoaded", start);
 
@@ -54,22 +52,28 @@
 
         async function start() {
             //henter data fra filen
-            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
 
             // den hentede data skal tolkes som json
-            allePersoner = await myJson.json();
-            console.log(allePersoner);
+            alleRetter = await myJson.json();
+            console.log(alleRetter);
             //kald funktion der viser data i DOM
-            visPersoner();
+            visRetter();
         }
 
 
 
-        function visPersoner() {
+        function visRetter() {
             let dest = document.querySelector("#liste");
 
-            allePersoner.forEach(person => {
-                dest.innerHTML += `<div class="Personramme"> <h2>${person.navn}</h2> <img src=${person.billede} alt=${person.navn}><br> <a href="https://github.com/${person.github}">${person.github} </a> </div>`
+            alleRetter.forEach(retter => {
+                dest.innerHTML += `
+              <div class="minret">
+                <h3>${ret.navn}</h3>
+                <p>${ret.github}</p>
+                <img src=${ret.billede} alt=${ret.navn}>
+             </div>
+            `;
             })
         }
     </script>
