@@ -7,7 +7,30 @@
     <title></title>
     <style>
         .minedyr {
-            border: 1px solid red;
+            border: 1px solid black;
+            padding: 1rem;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            text-align: center;
+            margin: 1rem;
+            grid-gap: 2rem;
+        }
+
+        @media only screen and (min-width:600px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: center;
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: center;
+            }
         }
     </style>
 </head>
