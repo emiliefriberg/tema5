@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .minedyr {
+            border: 1px solid black;
+            padding: 1rem;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            text-align: center;
+            margin: 1rem;
+            grid-gap: 2rem;
+        }
+
+        @media only screen and (min-width:600px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: center;
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="liste">
+
+    </div>
+
+    <script>
+        let alleDyr = [];
+
+        document.addEventListener("DOMContentLoaded", start);
+
+
+
+        async function start() {
+            //henter data fra filen
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+
+
+            // den hentede data skal tolkes som json
+            alleDyr = await myJson.json();
+            //kald funktion der viser data i DOM
+            visDyr();
+        }
+
+
+
+        function visDyr() {
+            let dest = document.querySelector("#liste");
+
+            alleDyr.forEach(dyr => {
+                dest.innerHTML += `<div class="minedyr"> <h3>${dyr.navn}</h3> <p>${dyr.type} fra ${dyr.levested}</p> <img src=${dyr.billede} alt=${dyr.navn}></div>`;
+            })
+        }
+
+    </script>
+</body>
+
+</html>
