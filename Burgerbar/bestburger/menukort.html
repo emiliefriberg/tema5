@@ -10,6 +10,10 @@
     <style>
         /*************      BURGERMENU  ******************/
 
+        .topnav {
+            display: none;
+        }
+
         #bmenu {
 
             list-style-type: none;
@@ -31,7 +35,7 @@
             font-size: 1.3rem;
             text-decoration: none;
             color: #BF4949;
-            border-bottom: 3px black dashed;
+            border-bottom: 3px #363636 dashed;
             text-transform: uppercase;
 
 
@@ -68,6 +72,7 @@
 
         .logo {
             width: 9rem;
+            margin: 1rem;
 
         }
 
@@ -82,6 +87,11 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+        }
+
+        #kurven {
+            display: flex;
+            justify-content: center;
         }
 
         #liste {
@@ -101,7 +111,7 @@
         }
 
         a {
-            color: #746e68;
+            color: #363636;
             font-family: impact;
 
         }
@@ -109,13 +119,17 @@
 
 
         h2 {
-            color: #746e68;
-            margin-left: 1rem;
+            color: white;
+            margin: 0 0 0 1rem;
+            font-size: 2rem;
+            font-family: 'Seravek';
         }
 
         p {
-            margin-left: 1rem;
-            color: #746e68;
+            margin: 0 0 0 1rem;
+            font-size: 1rem;
+            color: white;
+            font-family: 'Seravek';
         }
 
 
@@ -143,15 +157,16 @@
 
         img {
             width: 100%;
+
         }
 
 
         .menuramme {
-
-            background-color: #cbc9c6;
-
-
+            background-color: #BF4949;
+            border: solid #363636 2px;
+            padding-bottom: 1rem;
         }
+
 
         .menu button {
             font-family: 'Alfa Slab One';
@@ -165,13 +180,17 @@
             font-size: 1.3em;
         }
 
+
         .valgt {
             background-color: #9b9b9a;
         }
 
         .menuramme:nth-child(even) {
-            background: #f0eeee;
+            border: solid #363636 2px;
+            background: #363636;
+            padding-bottom: 1rem;
         }
+
 
         .filter {
             height: 2vw;
@@ -184,9 +203,13 @@
             text-align: center;
         }
 
+        .menu h1 {
+            margin-top: 0;
+        }
+
 
         #ramme {
-            border: 3px black dashed;
+            border: 3px #363636 dashed;
             padding: 1rem;
         }
 
@@ -216,6 +239,7 @@
         #luk button {
             font-size: 2rem;
             padding: 1rem 2rem;
+            margin-top: 2rem;
         }
 
 
@@ -227,13 +251,42 @@
 
             header {
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: space-between;
             }
 
 
             .menu button {
                 font-size: 0.8em;
+            }
+
+            .burgermenu {
+                display: none;
+            }
+
+            .topnav {
+                display: unset;
+            }
+
+            .topnav a {
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: #BF4949;
+                padding: 0.5rem 0.5rem 0 0.5rem;
+                border-bottom: 3px #363636 dashed;
+
+            }
+
+            .topnav a:hover {
+                font-size: 2rem;
+            }
+
+            #top {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
             }
 
         }
@@ -246,14 +299,8 @@
 
             }
 
-            header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
             .menu button {
-                font-size: 1em;
+                font-size: 1.5em;
             }
 
             .kurv {
@@ -264,6 +311,26 @@
             .burgermenu {
                 display: none;
             }
+
+            .topnav {
+                display: unset;
+            }
+
+            #top {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+
+            }
+
+            header {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+
+
         }
     </style>
 </head>
@@ -287,9 +354,23 @@
             </div>
         </nav>
 
-        <div class="logo">
-            <a href="forside.html"><img src="imgs/logo.svg" alt="logo"></a>
+        <div id="top">
+            <div class="logo">
+                <a href="forside.html"><img src="imgs/logo.svg" alt="logo"></a>
 
+            </div>
+
+            <nav>
+                <div class="topnav">
+                    <a href="index.html">Forside</a>
+                    <a href="cv.html">CV</a>
+                    <a href="web.html">webdesign</a>
+                    <a href="indhold.html">indhold</a>
+                    <a href="animation.html">animation</a>
+                    <a href="ux.html">ux</a>
+
+                </div>
+            </nav>
         </div>
 
         <div id="popup">
@@ -299,22 +380,23 @@
             <div id="indhold"></div>
         </div>
 
-        <div class="menu">
-            <h1>MENU</h1>
-            <nav class="menu">
-                <span id="ramme">
-                    <button class="valgt filter" data-hold="alle">Alt</button>
-                    <button class="filter" data-hold="Burger">Burgere</button>
-                    <button class="filter" data-hold="Sideorders">Sideorders</button>
-                    <button class="filter" data-hold="Drinks">Drinks</button></span>
-            </nav>
-        </div>
+    </header>
 
+    <div class="menu">
+        <h1>MENU</h1>
+        <nav class="menu">
+            <span id="ramme">
+                <button class="valgt filter" data-hold="alle">Alt</button>
+                <button class="filter" data-hold="Burger">Burgere</button>
+                <button class="filter" data-hold="Sideorders">Sideorders</button>
+                <button class="filter" data-hold="Drinks">Drinks</button></span>
+        </nav>
+    </div>
+    <div id="kurven">
         <div class="kurv">
             <img src="imgs/kurv.png" alt="kurv">
         </div>
-
-    </header>
+    </div>
 
     <div id="liste"></div>
 
@@ -393,7 +475,7 @@
                     <div class="menuramme">
                     <img src=imgs/${ret.billede}.jpg alt=${ret.navn}>
                     <h2>${ret.navn}</h2> <br>
-                    <p>${ret.kort}</p> <br>
+                    <p>${ret.lang}</p> <br>
                     <p>Pris: ${ret.pris},-</p>
                     </div>`;
 

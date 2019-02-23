@@ -145,6 +145,24 @@
             animation-direction: alternate;
             animation-timing-function: ease-out;
         }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.97);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .pulse {
+            animation-name: pulse;
+            animation-duration: 1.7s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease-in;
+        }
     </style>
 </head>
 
@@ -165,11 +183,18 @@
             console.log("hej");
             document.querySelector(".logo").classList.add("ease");
             document.querySelector(".logo").addEventListener("animationend", shake);
+
         }
 
 
         function shake() {
             document.querySelector(".logo").classList.add("shake");
+
+            document.querySelector(".logo").addEventListener("animationend", pulse);
+        }
+
+        function pulse() {
+            document.querySelector(".logo").classList.add("pulse");
         }
     </script>
 </body>
