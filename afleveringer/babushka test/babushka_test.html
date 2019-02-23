@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            margin: 1rem;
+            grid-gap: 3rem;
+
+        }
+
+
+        footer section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 10px;
+            background-color: #666;
+        }
+
+        a {
+            color: #746e68;
+        }
+
+
+
+        h2 {
+            color: #000000;
+            margin-left: 1rem;
+        }
+
+        p {
+            margin-left: 1rem;
+            color: #000000;
+        }
+
+
+        body {
+            background: white;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+
+
+        }
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vw;
+            position: fixed;
+            display: none;
+            background-color: hsla(0, 0%, 41%, 0.5);
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 65vw;
+            margin: 4rem auto;
+        }
+
+        #luk {
+            position: fixed;
+            right: 2rem;
+            padding-right: 2rem;
+        }
+
+        #luk button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
+
+        img {
+            width: 100%;
+        }
+
+        @media only screen and (min-width:600px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+        }
+
+        .menuramme {
+            border: 1px solid white;
+            background-color: #b4b4b4;
+
+
+        }
+
+        .valgt {
+            background-color: #9b9b9a;
+        }
+
+        .menuramme:nth-child(even) {
+            background: #e5e5e5;
+            border: white;
+        }
+
+        .filter {
+            height: 2vw;
+            margin: 0.3vw;
+            font-weight: bold;
+
+        }
+
+        .menu {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+    <header>
+
+        <h1>Alle</h1>
+        <nav class="menu">
+            <button class="valgt filter" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="forretter">Foretter</button>
+            <button class="filter" data-hold="hovedretter">Hovedretter</button>
+
+            <button class="filter" data-hold="desserter">Desserter</button>
+            <button class="filter" data-hold="drikkevarer">Drikkevarer</button>
+            <button class="filter" data-hold="sideorders">Side orders</button>
+        </nav>
+    </header>
+
+    <div id="liste"></div>
+
+    <footer>
+        <section>
+            <adress>
+                Grønnegade 97<br>1234 København K <br>
+            </adress>
+
+            <aside>
+                Åbningstider: <br> Mandag - Fredag: 10:30 - 22:00 <br> Lørdag: 12:00 - 23:00
+
+            </aside>
+        </section>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let alleRetter = [];
+        let filter = "alle";
+        const dest = document.querySelector("#liste");
+
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            alleRetter = await myJson.json();
+            alleRetter.sort((a, b) => {
+                return a.navn.localeCompare(b.navn)
+            });
+
+            visRet();
+        }
+
+
+
+
+        //        document.addEventListener("DOMContentLoaded", start);
+
+        function visRet() {
+            dest.innerHTML = "";
+            alleRetter.forEach(ret => {
+                if (filter == "alle" || filter == ret.kategori) {
+                    let template =
+                        `<div class="menuramme">
+                        <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}><h2>${ret.navn}</h2> <br>
+                        <p>${ret.kort}</p><br>
+                        <p>Pris: ${ret.pris},-</p>
+                        </div>`;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                    dest.lastElementChild.addEventListener("click", () => {
+                        visSingle(ret);
+                    });
+
+
+                    function visSingle(ret) {
+                        document.querySelector("#indhold").innerHTML =
+                            `<div class="menuramme">
+                        <img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}><h2>${ret.navn}</h2> <br><p>${ret.lang}</p><br>
+                        <p>Pris: ${ret.pris},-</p>
+                        </div>`;
+
+                        document.querySelector("#popup").style.display = "block";
+                        document.querySelector("#popup #luk").addEventListener("click", close);
+                    }
+
+                    function close() {
+                        document.querySelector("#popup").style.display = "none";
+                    }
+                }
+            })
+        }
+
+
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visRet();
+        }
+        start();
+    </script>
+</body>
+
+</html>

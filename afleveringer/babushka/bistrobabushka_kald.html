@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+
+
+    <style>
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            margin: 1rem;
+            grid-gap: 3rem;
+
+
+
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+
+
+        }
+
+        a {
+            color: #746e68;
+        }
+
+
+
+        h2 {
+            color: #43403d;
+            margin-left: 1rem;
+        }
+
+        p {
+            margin-left: 1rem;
+            color: #43403d;
+        }
+
+
+        body {
+            background-color: #e6e6e6;
+
+
+        }
+
+        h1 {
+            color: #746e68;
+            text-align: center;
+
+
+        }
+
+
+        img {
+            width: 100%;
+        }
+
+        @media only screen and (min-width:600px) {
+            #liste {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (min-width:768px) {
+            #liste {
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+        }
+
+        .menuramme {
+            /*         border: 1px solid #d8d8ce;*/
+            background-color: #cbc9c6;
+
+
+        }
+
+        .valgt {
+            background-color: #9b9b9a;
+        }
+
+        .menuramme:nth-child(even) {
+            background: #f0eeee;
+        }
+
+        .filter {
+            height: 2vw;
+            margin: 0.3vw;
+
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        footer section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 10px;
+
+
+
+        }
+
+        footer {
+            background-color: #666;
+            color: #c9c1ba;
+        }
+
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: hsla(0, 1%, 69%, 0.5);
+            display: none;
+            overflow: scroll;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 40vw;
+            margin: 4rem auto;
+
+
+
+        }
+
+
+
+
+        #luk {
+            position: fixed;
+            right: 21rem;
+
+        }
+
+        #luk button {
+            font-size: 2rem;
+            padding: 0.5rem 0.5rem;
+        }
+
+        header img {
+            background-color: orange;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--
+    <div id="popup">
+        <div id="luk">
+            <button>X</button>
+            <div id="indhold"></div>
+        </div>
+    </div>
+-->
+
+
+
+    <header>
+
+        <img src="imgs/red_star.svg" alt="logo">
+
+        <h1>Alle</h1>
+        <nav class="menu">
+            <button class="valgt filter" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="forretter">Foretter</button>
+            <button class="filter" data-hold="hovedretter">Hovedretter</button>
+
+            <button class="filter" data-hold="desserter">Desserter</button>
+            <button class="filter" data-hold="drikkevarer">Drikkevarer</button>
+            <button class="filter" data-hold="sideorders">Side orders</button>
+        </nav>
+    </header>
+    <main>
+        <section id="liste"></section>
+    </main>
+
+    <footer>
+        <section>
+            <adress>
+                Addresse: <br> Grønnegade 97 <br> 1234 København K
+            </adress>
+
+
+            <aside>
+                Åbningstider: <br> Mandag - fredag 10:30-22:00 <br> Lørdag 12:00 - 23:00
+            </aside>
+
+        </section>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start);
+
+        let alleRetter = [];
+        let filter = "alle";
+        const dest = document.querySelector("#liste");
+
+        async function start() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            alleRetter = await myJson.json();
+            alleRetter.sort((a, b) => {
+                return a.navn.localeCompare(b.navn)
+            });
+            visRet();
+        }
+
+        function visRet() {
+            dest.innerHTML = "";
+            alleRetter.forEach(ret => {
+                if (filter == "alle" || filter == ret.kategori) {
+                    let template =
+                        //                    dest.innerHTML +=
+                        `<div class="menuramme"><img src=imgs/small/${ret.billede}-sm.jpg alt=${ret.navn}><h2>${ret.navn}</h2> <br><p>${ret.kort}</p> <br> <p>Pris: ${ret.pris},-</p></div>`;
+                    dest.insertAdjacentHTML("beforeend", template);
+                    dest.lastElementChild.addEventListener("click", () => {
+                        location.href = "bistrobabushka_singleView.html?id=" + ret.id;
+
+                    });
+
+
+
+                }
+            })
+        }
+
+
+
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtrering);
+        })
+
+
+
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            visRet();
+        }
+        start();
+    </script>
+</body>
+
+</html>
