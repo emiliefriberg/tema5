@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,7 +70,6 @@
         /*************      BURGERMENU  ******************/
 
 
-
         .logo {
             width: 9rem;
             margin: 0 1rem 2rem 1rem;
@@ -99,28 +97,6 @@
             margin: 1rem;
             grid-gap: 1rem;
 
-        }
-
-
-        .velkommen {
-            border: 3px #363636 dashed;
-            padding: 1rem;
-            background-color: white;
-            margin-bottom: 2rem;
-        }
-
-        .velkommen p {
-            color: black;
-            text-align: left;
-            margin: 0;
-        }
-
-        .velkommen h2 {
-            color: #BF4949;
-            font-family: impact;
-            text-align: left;
-            margin: 0 0 1rem;
-            text-align: center;
         }
 
 
@@ -203,24 +179,6 @@
         }
 
 
-        .valgt {
-            background-color: #9b9b9a;
-        }
-
-        .menuramme:nth-child(even) {
-            border: solid #363636 2px;
-            background: #363636;
-            padding-bottom: 1rem;
-        }
-
-
-        .filter {
-            height: 2vw;
-            margin: 0.3vw;
-            font-weight: bold;
-
-        }
-
         .menu {
             text-align: center;
         }
@@ -233,7 +191,16 @@
         #ramme {
             border: 3px #363636 dashed;
             padding: 1rem;
+            background-color: white;
+            margin-bottom: 2rem;
         }
+
+        #ramme p {
+            color: black;
+            text-align: left;
+            margin: 0;
+        }
+
 
         #popup {
             top: 0;
@@ -364,10 +331,6 @@
                 display: unset;
             }
 
-            .topnav a {
-                margin-left: 1rem;
-            }
-
             #top {
                 display: flex;
                 flex-direction: row;
@@ -401,197 +364,179 @@
     </style>
 </head>
 
-
-
-
-
 <body>
 
-    <header>
+    <body>
 
-        <nav>
-            <div class="burgermenu">
-                <div id="menuknap">☰</div>
-                <ul id="bmenu" class="hidden">
-                    <li><a href="menukort.html">Menukort</a></li>
-                    <li><a href="omos.html">Om os</a></li>
-                    <li><a href="kontaktos.html">Kontakt os</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div id="top">
-            <div class="logo">
-                <a href="forside.html"><img src="imgs/logo.svg" alt="logo"></a>
-
-            </div>
+        <header>
 
             <nav>
-                <div class="topnav">
-                    <a href="menukort.html">Menukort</a>
-                    <a href="omos.html">Om os</a>
-                    <a href="kontaktos.html">Kontakt os</a>
+                <div class="burgermenu">
+                    <div id="menuknap">☰</div>
+                    <ul id="bmenu" class="hidden">
+                        <li><a href="menukort.html">Menukort</a></li>
+                        <li><a href="omos.html">Om os</a></li>
+                        <li><a href="kontaktos.html">Kontakt os</a></li>
+                    </ul>
+                </div>
+            </nav>
 
+            <div id="top">
+                <div class="logo">
+                    <a href="forside.html"><img src="imgs/logo.svg" alt="logo"></a>
+
+                </div>
+
+                <nav>
+                    <div class="topnav">
+                        <a href="menukort.html">Menukort</a>
+                        <a href="omos.html">Om os</a>
+                        <a href="kontaktos.html">Kontakt os</a>
+
+                    </div>
+                </nav>
+            </div>
+            <div id="kurven">
+                <div class="kurv">
+                    <img src="imgs/kurv.png" alt="kurv">
+                </div>
+            </div>
+
+        </header>
+
+        <div class="menu">
+            <h1>Om os</h1>
+            <nav class="menu">
+                <div id="ramme">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
                 </div>
             </nav>
         </div>
-        <div id="kurven">
-            <div class="kurv">
-                <img src="imgs/kurv.png" alt="kurv">
-            </div>
-        </div>
 
-    </header>
+        <footer>
+            <section id="footer">
+                <adress>
+                    Mariendalsvej 50<br>2000 Frederiksberg<br>
+                </adress>
 
-    <div id="popup">
-        <div id="luk">
-            <button> X </button>
-        </div>
-        <div id="indhold"></div>
-    </div>
+                <aside>
+                    Åbningstider: <br> Mandag - Fredag: 10:00 - 22:00 <br> Lørdag: 12:00 - 23:00
+                </aside>
+            </section>
+        </footer>
 
 
-    <div class="velkommen">
-        <h2>Velkommen til Best Burgerbar</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        </p>
-    </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", start);
+            window.addEventListener("load", sidenVises);
 
-    <div class="menu">
-        <h1>MENU</h1>
-        <nav class="menu">
-            <div id="ramme">
-                <button class="valgt filter" data-hold="alle">Alt</button>
-                <button class="filter" data-hold="Burger">Burgere</button>
-                <button class="filter" data-hold="Sideorders">Sideorders</button>
-                <button class="filter" data-hold="Drinks">Drinks</button></div>
-        </nav>
-    </div>
-
-    <div id="liste"></div>
-
-    <footer>
-        <section id="footer">
-            <adress>
-                Mariendalsvej 50<br>2000 Frederiksberg<br>
-            </adress>
-
-            <aside>
-                Åbningstider: <br> Mandag - Fredag: 10:00 - 22:00 <br> Lørdag: 12:00 - 23:00
-            </aside>
-        </section>
-    </footer>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", start);
-        window.addEventListener("load", sidenVises);
-
-        let alleRetter = [];
-        let filter = "alle";
-        const dest = document.querySelector("#liste");
+            let alleRetter = [];
+            let filter = "alle";
+            const dest = document.querySelector("#liste");
 
 
 
-        function sidenVises() {
-            console.log("siden vises");
-            //klik på menu-knap
-            document.querySelector("#menuknap").addEventListener("click", toggleMenu);
-        }
-
-        function toggleMenu() {
-            console.log("toggle bmenu");
-            document.querySelector("#bmenu").classList.toggle("hidden");
-
-
-            let erSkjult = document.querySelector("#bmenu").classList.contains("hidden");
-
-            if (erSkjult == true) {
-                //        menuen er nu skjult - ændre den til☰
-                document.querySelector("#menuknap").textContent = "☰";
-            } else {
-                //        menuen er vist - ændre menuknap til ×
-                document.querySelector("#menuknap").textContent = " × "
-
+            function sidenVises() {
+                console.log("siden vises");
+                //klik på menu-knap
+                document.querySelector("#menuknap").addEventListener("click", toggleMenu);
             }
-        }
+
+            function toggleMenu() {
+                console.log("toggle bmenu");
+                document.querySelector("#bmenu").classList.toggle("hidden");
 
 
+                let erSkjult = document.querySelector("#bmenu").classList.contains("hidden");
 
-
-
-
-
-        async function start() {
-            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1126qWEw3jcYJD0l3huDZSxWrWqDpmEKBBRuWbAT2JBc");
-            alleRetter = await myJson.json();
-            alleRetter.sort((a, b) => {
-                return a.navn.localeCompare(b.navn)
-            });
-
-            visRet();
-        }
-
-
-        //        document.addEventListener("DOMContentLoaded", start);
-
-        function visRet() {
-            dest.innerHTML = "";
-            alleRetter.forEach(ret => {
-                if (filter == "alle" || filter == ret.kategori) {
-
-                    let template = `
-                    <div class="menuramme">
-                    <img src=imgs/${ret.billede}.jpg alt=${ret.navn}>
-                    <h2>${ret.navn}</h2> <br>
-                    <p>${ret.lang}</p> <br>
-                    <p>Pris: ${ret.pris},-</p>
-                    </div>`;
-
-                    dest.insertAdjacentHTML("beforeend", template);
-                    dest.lastElementChild.addEventListener("click", () => {
-                        visSingle(ret)
-                    });
-
-                    function visSingle(ret) {
-                        document.querySelector("#indhold").innerHTML = `
-                    <div class="menuramme">
-                    <img src=imgs/${ret.billede}.jpg alt=${ret.navn}>
-                    <h2>${ret.navn}</h2> <br>
-                    <p>${ret.lang}</p> <br>
-                    <p>Pris: ${ret.pris},-</p>
-                    </div>`;
-
-                        document.querySelector("#popup").style.display = "block";
-                        document.querySelector("#popup #luk").addEventListener("click", close);
-                    }
-
-                    function close() {
-                        document.querySelector("#popup").style.display = "none";
-                    }
+                if (erSkjult == true) {
+                    //        menuen er nu skjult - ændre den til☰
+                    document.querySelector("#menuknap").textContent = "☰";
+                } else {
+                    //        menuen er vist - ændre menuknap til ×
+                    document.querySelector("#menuknap").textContent = " × "
 
                 }
-            })
-        }
+            }
 
 
-        document.querySelectorAll(".filter").forEach(elm => {
-            elm.addEventListener("click", filtrering);
-        })
 
-        function filtrering() {
-            filter = this.getAttribute("data-hold");
-            document.querySelector("h1").textContent = this.textContent;
+
+
+
+
+            async function start() {
+                const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1126qWEw3jcYJD0l3huDZSxWrWqDpmEKBBRuWbAT2JBc");
+                alleRetter = await myJson.json();
+                alleRetter.sort((a, b) => {
+                    return a.navn.localeCompare(b.navn)
+                });
+
+                visRet();
+            }
+
+
+            //        document.addEventListener("DOMContentLoaded", start);
+
+            function visRet() {
+                dest.innerHTML = "";
+                alleRetter.forEach(ret => {
+                    if (filter == "alle" || filter == ret.kategori) {
+
+                        let template = `
+                    <div class="menuramme">
+                    <img src=imgs/${ret.billede}.jpg alt=${ret.navn}>
+                    <h2>${ret.navn}</h2> <br>
+                    <p>${ret.lang}</p> <br>
+                    <p>Pris: ${ret.pris},-</p>
+                    </div>`;
+
+                        dest.insertAdjacentHTML("beforeend", template);
+                        dest.lastElementChild.addEventListener("click", () => {
+                            visSingle(ret)
+                        });
+
+                        function visSingle(ret) {
+                            document.querySelector("#indhold").innerHTML = `
+                    <div class="menuramme">
+                    <img src=imgs/${ret.billede}.jpg alt=${ret.navn}>
+                    <h2>${ret.navn}</h2> <br>
+                    <p>${ret.lang}</p> <br>
+                    <p>Pris: ${ret.pris},-</p>
+                    </div>`;
+
+                            document.querySelector("#popup").style.display = "block";
+                            document.querySelector("#popup #luk").addEventListener("click", close);
+                        }
+
+                        function close() {
+                            document.querySelector("#popup").style.display = "none";
+                        }
+
+                    }
+                })
+            }
+
+
             document.querySelectorAll(".filter").forEach(elm => {
-                elm.classList.remove("valgt");
+                elm.addEventListener("click", filtrering);
             })
-            this.classList.add("valgt");
-            visRet();
-        }
-        start();
-    </script>
-</body>
 
+            function filtrering() {
+                filter = this.getAttribute("data-hold");
+                document.querySelector("h1").textContent = this.textContent;
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+                visRet();
+            }
+            start();
+        </script>
+    </body>
+</body>
 </html>
