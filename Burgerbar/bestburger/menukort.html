@@ -8,6 +8,64 @@
 
     <title></title>
     <style>
+        /*************      BURGERMENU  ******************/
+
+        #bmenu {
+
+            list-style-type: none;
+            transition: transform 1s;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #F9F9EF;
+            z-index: 1;
+            margin-block-start: 0;
+            padding-inline-start: 0;
+
+
+        }
+
+        #bmenu a {
+
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: #BF4949;
+            border-bottom: 3px black dashed;
+            text-transform: uppercase;
+
+
+        }
+
+        #bmenu a:hover {
+            font-size: 2rem;
+        }
+
+        #bmenu li {
+            display: flex;
+            justify-content: center;
+
+            padding: 2rem;
+        }
+
+        .hidden {
+            transform: translateX(-150%);
+            /*    display: none;*/
+
+        }
+
+        #menuknap {
+            display: inline-block;
+            color: #BF4949;
+            font-size: 2rem;
+            padding: 1.5rem;
+            cursor: pointer;
+
+        }
+
+        /*************      BURGERMENU  ******************/
+
+
         .logo {
             width: 9rem;
 
@@ -202,8 +260,11 @@
                 width: 7rem;
                 padding: 1rem;
             }
-        }
 
+            .burgermenu {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -214,6 +275,18 @@
 <body>
 
     <header>
+
+        <nav>
+            <div class="burgermenu">
+                <div id="menuknap">☰</div>
+                <ul id="bmenu" class="hidden">
+                    <li><a href="index.html">Menukort</a></li>
+                    <li><a href="cv.html">om os</a></li>
+                    <li><a href="web.html">kontakt os</a></li>
+                </ul>
+            </div>
+        </nav>
+
         <div class="logo">
             <a href="forside.html"><img src="imgs/logo.svg" alt="logo"></a>
 
@@ -261,10 +334,42 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", start);
+        window.addEventListener("load", sidenVises);
 
         let alleRetter = [];
         let filter = "alle";
         const dest = document.querySelector("#liste");
+
+
+
+        function sidenVises() {
+            console.log("siden vises");
+            //klik på menu-knap
+            document.querySelector("#menuknap").addEventListener("click", toggleMenu);
+        }
+
+        function toggleMenu() {
+            console.log("toggle bmenu");
+            document.querySelector("#bmenu").classList.toggle("hidden");
+
+
+            let erSkjult = document.querySelector("#bmenu").classList.contains("hidden");
+
+            if (erSkjult == true) {
+                //        menuen er nu skjult - ændre den til☰
+                document.querySelector("#menuknap").textContent = "☰";
+            } else {
+                //        menuen er vist - ændre menuknap til ×
+                document.querySelector("#menuknap").textContent = " × "
+
+            }
+        }
+
+
+
+
+
+
 
         async function start() {
             const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1126qWEw3jcYJD0l3huDZSxWrWqDpmEKBBRuWbAT2JBc");
@@ -275,8 +380,6 @@
 
             visRet();
         }
-
-
 
 
         //        document.addEventListener("DOMContentLoaded", start);
@@ -335,7 +438,6 @@
             visRet();
         }
         start();
-
     </script>
 </body>
 
