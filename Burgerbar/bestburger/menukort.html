@@ -77,29 +77,25 @@
         }
 
         .kurv {
-            width: 7rem;
-            padding: 2rem;
-
+            width: 5rem;
+            padding: 1rem;
         }
+
 
         header {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
             /*background-color: rgba(0, 0, 0, 0.37);*/
         }
 
-        #kurven {
-            display: flex;
-            justify-content: center;
-        }
 
         #liste {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             margin: 1rem;
-            grid-gap: 3rem;
+            grid-gap: 1rem;
 
         }
 
@@ -136,7 +132,7 @@
 
         body {
             background-color: #F9F9EF;
-            margin: 0;
+            margin: 0.5rem;
             padding: 0;
             font-family: impact;
 
@@ -243,6 +239,17 @@
             margin-top: 2rem;
         }
 
+        #footer {
+            display: flex;
+            justify-content: center;
+            background-color: #F9F9EF;
+
+        }
+
+        #footer adress {
+            margin-right: 1rem;
+        }
+
 
         @media only screen and (min-width:600px) {
             #liste {
@@ -252,13 +259,13 @@
 
             header {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 justify-content: space-between;
             }
 
 
             .menu button {
-                font-size: 0.8em;
+                font-size: 1.5em;
             }
 
             .burgermenu {
@@ -300,13 +307,26 @@
 
             }
 
+            .topnav a {
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: #BF4949;
+                padding: 0.1rem 0.1rem 0 0.1rem;
+                border-bottom: 3px #363636 dashed;
+
+            }
+
             .menu button {
                 font-size: 1.5em;
             }
 
             .kurv {
-                width: 7rem;
+                width: 5rem;
                 padding: 1rem;
+            }
+
+            #kurven {
+                margin-left: 8rem;
             }
 
             .burgermenu {
@@ -332,6 +352,34 @@
             }
 
 
+        }
+
+        @media only screen and (min-width:768px) {
+            body {
+                margin: 0 5rem 0 5rem;
+            }
+        }
+
+        @media only screen and (min-width:1024px) {
+
+            body {
+                margin: 0 8rem 0 8rem;
+            }
+
+            #kurven {
+                margin-left: 20rem;
+            }
+        }
+
+        @media only screen and (min-width:1268px) {
+
+            body {
+                margin: 0 8rem 0 8rem;
+            }
+
+            #kurven {
+                margin-left: 20rem;
+            }
         }
     </style>
 </head>
@@ -373,43 +421,42 @@
                 </div>
             </nav>
         </div>
-
-        <div id="popup">
-            <div id="luk">
-                <button> X </button>
+        <div id="kurven">
+            <div class="kurv">
+                <img src="imgs/kurv.png" alt="kurv">
             </div>
-            <div id="indhold"></div>
         </div>
 
     </header>
 
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
     <div class="menu">
         <h1>MENU</h1>
         <nav class="menu">
-            <span id="ramme">
+            <div id="ramme">
                 <button class="valgt filter" data-hold="alle">Alt</button>
                 <button class="filter" data-hold="Burger">Burgere</button>
                 <button class="filter" data-hold="Sideorders">Sideorders</button>
-                <button class="filter" data-hold="Drinks">Drinks</button></span>
+                <button class="filter" data-hold="Drinks">Drinks</button></div>
         </nav>
-    </div>
-    <div id="kurven">
-        <div class="kurv">
-            <img src="imgs/kurv.png" alt="kurv">
-        </div>
     </div>
 
     <div id="liste"></div>
 
     <footer>
-        <section>
+        <section id="footer">
             <adress>
-                Grønnegade 97<br>1234 København K <br>
+                Mariendalsvej 50<br>2000 Frederiksberg<br>
             </adress>
 
             <aside>
-                Åbningstider: <br> Mandag - Fredag: 10:30 - 22:00 <br> Lørdag: 12:00 - 23:00
-
+                Åbningstider: <br> Mandag - Fredag: 10:00 - 22:00 <br> Lørdag: 12:00 - 23:00
             </aside>
         </section>
     </footer>
