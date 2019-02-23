@@ -6,16 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
+        .tekst {
+            position: absolute;
+            z-index: 1;
+            margin-left: 0.5rem;
+        }
+
+        .tekst h1 {
+            font-size: 3.3rem;
+            font-family: impact;
+            color: white;
+        }
+
+
+
         .logo {
             background-image: url("imgs/logo.svg");
             background-repeat: no-repeat;
             background-size: 100%;
             position: absolute;
             z-index: 1;
-            width: 15vw;
+            width: 30vw;
             height: 15vw;
-            left: 40vw;
-            top: 18vw;
+            left: 37vw;
+            top: 58vw;
         }
 
 
@@ -136,6 +150,72 @@
             100% {
                 transform: translate(1px, -2px) rotate(-1deg);
             }
+
+        }
+
+
+
+        @media only screen and (min-width:600px) {
+
+            .logo {
+                background-image: url("imgs/logo.svg");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                position: absolute;
+                z-index: 1;
+                width: 17vw;
+                height: 15vw;
+                left: 40vw;
+                top: 20vw;
+            }
+        }
+
+
+
+
+
+        @media only screen and (min-width:768px) {
+
+            .logo {
+                background-image: url("imgs/logo.svg");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                position: absolute;
+                z-index: 1;
+                width: 30vw;
+                height: 15vw;
+                left: 36vw;
+                top: 50vw;
+            }
+
+            .tekst h1 {
+                font-size: 6rem;
+                font-family: impact;
+                color: white;
+            }
+
+        }
+
+        @media only screen and (min-width:1024px) {
+
+            .logo {
+                background-image: url("imgs/logo.svg");
+                background-repeat: no-repeat;
+                background-size: 100%;
+                position: absolute;
+                z-index: 1;
+                width: 20vw;
+                height: 15vw;
+                left: 43vw;
+                top: 25vw;
+            }
+
+
+            .tekst h1 {
+                font-size: 10rem;
+                font-family: impact;
+                color: white;
+            }
         }
 
 
@@ -168,12 +248,21 @@
 
 <body>
 
+    <div class="tekst">
+        <h1>Måske den bedste burger i byen.</h1>
+    </div>
     <div class="logo">
         <a href="menukort.html"><img src="imgs/logo.svg" alt="logo"></a>
     </div>
 
     <div id="splash">
-        <img src="imgs/splash.jpg" alt="splashbillede">
+        <picture>
+            <source media="(min-width:1920px)" srcset="imgs/desktop.jpg">
+            <source media="(min-width:1024px)" srcset="imgs/tablet_landscape.jpg">
+            <source media="(min-width:768px)" srcset="imgs/tablet_portrait.jpg">
+            <source media="(min-width:627px)" srcset="imgs/mobile_landscape.jpg">
+            <img src="imgs/mobile_portrait.jpg" alt="splashimage">
+        </picture>
     </div>
 
     <script>
