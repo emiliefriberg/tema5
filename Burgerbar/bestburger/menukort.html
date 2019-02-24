@@ -98,6 +98,7 @@
             grid-template-columns: repeat(1, 1fr);
             margin: 1rem;
             grid-gap: 1rem;
+            cursor: pointer;
 
         }
 
@@ -240,14 +241,14 @@
             width: 100vw;
             height: 100vh;
             position: fixed;
-            background-color: hsla(0, 0%, 6%, 0.5);
+            background-color: rgba(249, 249, 239, 0.67);
             display: none;
         }
 
         #indhold {
-            min-height: 50vh;
+            min-height: 20vh;
             background-color: white;
-            width: 40vw;
+            width: 90vw;
             margin: 4rem auto;
 
         }
@@ -255,13 +256,17 @@
         #luk {
             position: fixed;
             right: 2rem;
-            cursor: pointer;
         }
 
         #luk button {
             font-size: 2rem;
-            padding: 1rem 2rem;
+            padding: 0.5rem 1rem;
             margin-top: 2rem;
+            background-color: #BF4949;
+            color: white;
+            border: solid black 1.2px;
+            border-radius: 50%;
+            cursor: pointer;
         }
 
         #footer {
@@ -317,8 +322,13 @@
             #top {
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-start;
+                justify-content: space-between;
                 align-items: center;
+
+            }
+
+            #indhold {
+                width: 80vw;
 
             }
 
@@ -330,6 +340,10 @@
                 grid-template-columns: repeat(3, 1fr);
                 margin-top: 2rem;
 
+            }
+
+            body {
+                margin: 0 3rem 0 3rem;
             }
 
             .topnav a {
@@ -381,23 +395,75 @@
                 justify-content: space-between;
             }
 
+            #popup {
+                width: 88vw;
+            }
+
+            #indhold {
+                width: 75vw;
+
+            }
+
+
+
 
         }
 
-        @media only screen and (min-width:770px) {
-
-            body {
-                margin: 0 3rem 0 3rem;
+        @media only screen and (min-width:823px) {
+            #popup {
+                width: 90vw;
             }
         }
 
 
-        @media only screen and (min-width:1268px) {
+        @media only screen and (min-width:1000px) {
 
             body {
                 margin: 0 8rem 0 8rem;
             }
+
+            #popup {
+                width: 75vw;
+            }
+
+            #indhold {
+                width: 45vw;
+
+            }
+
+
         }
+
+        @media only screen and (min-width:1098px) {
+
+            body {
+                margin: 0 8rem 0 8rem;
+            }
+
+            #popup {
+                width: 80vw;
+            }
+
+            #indhold {
+                width: 45vw;
+                min-height: 30vh;
+                background-color: white;
+                margin: 4rem auto;
+
+            }
+
+
+            @media only screen and (min-width:1284px) {
+
+
+                #popup {
+                    width: 83vw;
+                }
+
+
+
+
+            }
     </style>
 </head>
 
